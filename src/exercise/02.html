@@ -1,29 +1,52 @@
 <!-- Intro to raw React APIs -->
 <!-- http://localhost:3000/isolated/exercise/02.html -->
 
-<body>
+<!-- Exercise -->
+<!-- <body>
   <div id="root"></div>
-
-  <!-- 🐨 add React and ReactDOM on the page.
-       💰 Here are script tags that'll do the job:
   <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
-  -->
-
   <script type="module">
+    const elementType = 'div'
+    const elementProps = {className: 'container', children: 'Hello World'}
+    
+    // Create an React element
+    const reactElement = React.createElement(elementType, elementProps)
+    
     const rootElement = document.getElementById('root')
+    // Put the previus element into the DOM
+    const root = ReactDOM.createRoot(rootElement)
+    root.render(reactElement)
+  </script>
+</body> -->
 
-    // You're going to re-implement this code using React!
-    // 💣 So go ahead and delete this implementation (or comment it out for now)
-    // These three lines are similar to React.createElement
-    const element = document.createElement('div')
-    element.textContent = 'Hello World' // 💰 in React, you set this with the "children" prop
-    element.className = 'container' // 💰 in React, this is also called the "className" prop
-    // This is similar to ReactDOM.createRoot().render()
-    rootElement.append(element)
+<!-- Extra credit exercise -->
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
+  <script type="module">
+    const elementNest1Type = 'span'
+    const elementNest1Props = {children: 'Hello'}
+    const reactNest1Element = React.createElement(
+      elementNest1Type,
+      elementNest1Props,
+    )
+    const elementNest2Type = 'span'
+    const elementNest2Props = {children: 'World'}
+    const reactNest2Element = React.createElement(
+      elementNest2Type,
+      elementNest2Props,
+    )
 
-    // 🐨 Please re-implement the regular document.createElement code above
-    // with these React API calls
-    // 💰 The example in the markdown file should be a good hint for you.
+    const elementType = 'div'
+    const elementProps = {
+      className: 'container',
+      children: [reactNest1Element, " ", reactNest2Element],
+    }
+    const reactElement = React.createElement(elementType, elementProps)
+    const rootElement = document.getElementById('root')
+    const root = ReactDOM.createRoot(rootElement)
+    root.render(reactElement)
   </script>
 </body>
